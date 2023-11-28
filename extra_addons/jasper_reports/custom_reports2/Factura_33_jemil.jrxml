@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura_33_jemil" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4641000000000066"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="IDS" class="java.lang.Object"/>
+	<parameter name="PIDS" class="java.util.List">
+		<defaultValueExpression><![CDATA[$P{IDS}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+	no_serie_csd_sat,
+	no_serie_csd_emisor,
+	lugar_exp,
+	fecha_emision,
+	tipo_comprobante,
+	folio_fiscal,
+	serie,
+	folio,
+	metodo_pago,
+	forma_pago,
+	regimen_fiscal,
+	amount_untaxed,
+	amount_tax,
+	amount_total,
+	uso_cfdi,
+	comentarios,
+	sello_digita_emisor,
+	sello_digita_sat,
+	account_invoice.*,
+	account_invoice_line.name as descripcion,
+	account_invoice_line.quantity as cantidad,
+	account_invoice_line.price_unit as valor_unitario,
+	account_invoice_line.price_subtotal as monto,
+	account_invoice_line.clave_prod_serv as clave_prod_serv,
+	account_invoice_line.clave_unidad as clave_unidad,
+	res_company.name as emisor_name,
+	res_company.rfc as emisor_rfc,
+	res_company.logo_emisor,
+	RP.zip as emisor_zip,
+	res_partner.name as receptor_name,
+	res_partner.razon_social as receptor_rfc
+
+FROM account_invoice
+
+INNER JOIN res_partner ON  account_invoice.partner_id = res_partner.id
+INNER JOIN res_company ON account_invoice.company_id = res_company.id
+INNER JOIN res_partner as RP ON res_company.partner_id = RP.id
+INNER JOIN account_invoice_line ON account_invoice.id = account_invoice_line.invoice_id
+
+
+WHERE $X{IN,account_invoice.id,PIDS} and account_invoice_line.invoice_id = account_invoice.id]]>
+	</queryString>
+	<field name="no_serie_csd_sat" class="java.lang.String"/>
+	<field name="no_serie_csd_emisor" class="java.lang.String"/>
+	<field name="lugar_exp" class="java.lang.String"/>
+	<field name="fecha_emision" class="java.sql.Timestamp"/>
+	<field name="tipo_comprobante" class="java.lang.String"/>
+	<field name="folio_fiscal" class="java.lang.String"/>
+	<field name="serie" class="java.lang.String"/>
+	<field name="folio" class="java.lang.String"/>
+	<field name="metodo_pago" class="java.lang.String"/>
+	<field name="forma_pago" class="java.lang.String"/>
+	<field name="regimen_fiscal" class="java.lang.String"/>
+	<field name="amount_untaxed" class="java.math.BigDecimal"/>
+	<field name="amount_tax" class="java.math.BigDecimal"/>
+	<field name="amount_total" class="java.math.BigDecimal"/>
+	<field name="uso_cfdi" class="java.lang.String"/>
+	<field name="comentarios" class="java.lang.String"/>
+	<field name="sello_digita_emisor" class="java.lang.String"/>
+	<field name="sello_digita_sat" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="comment" class="java.lang.String"/>
+	<field name="date_due" class="java.sql.Date"/>
+	<field name="check_total" class="java.math.BigDecimal"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="payment_term" class="java.lang.Integer"/>
+	<field name="number" class="java.lang.String"/>
+	<field name="message_last_post" class="java.sql.Timestamp"/>
+	<field name="company_id" class="java.lang.Integer"/>
+	<field name="currency_id" class="java.lang.Integer"/>
+	<field name="create_date" class="java.sql.Timestamp"/>
+	<field name="create_uid" class="java.lang.Integer"/>
+	<field name="fiscal_position" class="java.lang.Integer"/>
+	<field name="partner_bank_id" class="java.lang.Integer"/>
+	<field name="partner_id" class="java.lang.Integer"/>
+	<field name="supplier_invoice_number" class="java.lang.String"/>
+	<field name="reference_type" class="java.lang.String"/>
+	<field name="journal_id" class="java.lang.Integer"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="move_id" class="java.lang.Integer"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="internal_number" class="java.lang.String"/>
+	<field name="account_id" class="java.lang.Integer"/>
+	<field name="reconciled" class="java.lang.Boolean"/>
+	<field name="residual" class="java.math.BigDecimal"/>
+	<field name="move_name" class="java.lang.String"/>
+	<field name="date_invoice" class="java.sql.Date"/>
+	<field name="period_id" class="java.lang.Integer"/>
+	<field name="write_date" class="java.sql.Timestamp"/>
+	<field name="user_id" class="java.lang.Integer"/>
+	<field name="write_uid" class="java.lang.Integer"/>
+	<field name="origin" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="sent" class="java.lang.Boolean"/>
+	<field name="commercial_partner_id" class="java.lang.Integer"/>
+	<field name="fecha_certificacion" class="java.sql.Timestamp"/>
+	<field name="RfcProvCertif" class="java.lang.String"/>
+	<field name="total_con_letra" class="java.lang.String"/>
+	<field name="xml_64_cancelado" class="java.lang.Object"/>
+	<field name="state_ac" class="java.lang.String"/>
+	<field name="name_facturacion" class="java.lang.String"/>
+	<field name="xml_64" class="java.lang.Object"/>
+	<field name="acuse" class="java.lang.Object"/>
+	<field name="qr" class="java.lang.String"/>
+	<field name="cadena_original_s" class="java.lang.String"/>
+	<field name="bind" class="java.lang.Boolean"/>
+	<field name="pass_facturacion" class="java.lang.String"/>
+	<field name="predial_ids" class="java.lang.Integer"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="valor_unitario" class="java.math.BigDecimal"/>
+	<field name="monto" class="java.math.BigDecimal"/>
+	<field name="clave_prod_serv" class="java.lang.String"/>
+	<field name="clave_unidad" class="java.lang.String"/>
+	<field name="emisor_name" class="java.lang.String"/>
+	<field name="emisor_rfc" class="java.lang.String"/>
+	<field name="logo_emisor" class="java.lang.String"/>
+	<field name="emisor_zip" class="java.lang.String"/>
+	<field name="receptor_name" class="java.lang.String"/>
+	<field name="receptor_rfc" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="284" splitType="Stretch">
+			<staticText>
+				<reportElement x="307" y="19" width="72" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="32" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="307" y="56" width="248" height="1"/>
+				<graphicElement>
+					<pen lineWidth="4.0" lineColor="#00939C"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="307" y="67" width="72" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio Fiscal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="80" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Certificado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="93" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Emisión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="106" width="119" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lugar de Expedición:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="119" width="130" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Comprobante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="132" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="145" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="158" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regimen Fiscal:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="369" y="67" width="186" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folio_fiscal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy.MM.dd G &apos;at&apos; HH:mm:ss z">
+				<reportElement x="407" y="93" width="148" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date($F{fecha_emision}.getTime() - 06*60*60*1000)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="437" y="119" width="118" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo_comprobante}=="I"?"I/INGRESO": $F{tipo_comprobante}=="E"?"E/EGRESO" : $F{tipo_comprobante}=="T"?"T/TRASLADO" :
+$F{tipo_comprobante}=="N"?"N/NÓMINA" : $F{tipo_comprobante}=="P"?"P/PAGO" : null]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="132" width="148" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="145" width="148" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="158" width="148" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{regimen_fiscal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="181" width="555" height="12" forecolor="#FEF7F7" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECEPTOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="379" y="19" width="176" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{emisor_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="32" width="148" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{emisor_rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="106" width="129" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{emisor_zip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="12" forecolor="#FEF7F7" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMISOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="193" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="222" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="235" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USO CFDI:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="100" y="193" width="454" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{receptor_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="235" width="184" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{uso_cfdi}=="G01"?"G01/Adquisición de mercancias": $F{uso_cfdi}=="G02"?"G02/Devoluciones, descuentos o bonificaciones" :
+$F{uso_cfdi}=="G03"?"G03/Gastos en general": $F{uso_cfdi}=="I01"?"I01/Construcciones" :
+$F{uso_cfdi}=="I02"?"I02/Mobilario y equipo de oficina por inversiones": $F{uso_cfdi}=="I03"?"I03/Equipo de transporte" :
+$F{uso_cfdi}=="I04"?"I04/Equipo de computo y accesorios y equipo de oficina por inversiones": $F{uso_cfdi}=="I05"?"I05/Dados, troqueles, moldes, matrices y herramental" :
+$F{uso_cfdi}=="I06"?"I06/Comunicaciones telefónicas": $F{uso_cfdi}=="I07"?"I07/Comunicaciones satelitales" :
+$F{uso_cfdi}=="I08"?"I08/Otra maquinaria y equipo": $F{uso_cfdi}=="D01"?"D01/Honorarios médicos, dentales y gastos hospitalarios" :
+$F{uso_cfdi}=="D02"?"D02/Gastos médicos por incapacidad o discapacidad": $F{uso_cfdi}=="D03"?"D03/Gastos funerales" :
+$F{uso_cfdi}=="D04"?"D04/Donativos": $F{uso_cfdi}=="D03"?"D03/Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)" :
+$F{uso_cfdi}=="D06"?"D06/Aportaciones voluntarias al SAR": $F{uso_cfdi}=="D07"?"D07/Primas por seguros de gastos médicos" :
+$F{uso_cfdi}=="D08"?"D08/Gastos de transportación escolar obligatoria": $F{uso_cfdi}=="D09"?"D09/Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones" :
+$F{uso_cfdi}=="D10"?"D10/Pagos por servicios educativos (colegiaturas)": $F{uso_cfdi}=="P01"?"P01/Por definir" : null]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="248" width="556" height="36" forecolor="#FEF7F7" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCEPTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="394" y="264" width="78" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="101" y="264" width="50" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="151" y="264" width="66" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave Unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="219" y="264" width="175" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="264" width="100" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave del Servicio/Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="472" y="264" width="84" height="20" forecolor="#FEFEFE" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="407" y="80" width="148" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_serie_csd_emisor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="222" width="308" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{receptor_rfc}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="14" y="30" width="223" height="89"/>
+				<imageExpression class="java.lang.String"><![CDATA["$F{logo_emisor}"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="85" splitType="Stretch">
+			<textField>
+				<reportElement x="103" y="2" width="49" height="26"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="220" y="2" width="173" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="393" y="2" width="78" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{valor_unitario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="471" y="2" width="84" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Float"><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="2" width="66" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clave_unidad}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="39" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed" lineColor="#777777"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="407" y="40" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Impuesto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="50" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tipo de Factor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="60" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TasaOCuota:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="70" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="40" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[02/IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="50" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="60" width="69" height="10"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[0.160000]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="82" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#777777"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="2" width="100" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clave_prod_serv}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="476" y="70" width="69" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Float"><![CDATA[$F{monto}*(0.16)]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{comentarios}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="15">
+			<textField>
+				<reportElement x="1" y="0" width="555" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{comentarios}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="310">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="408" y="39" width="148" height="13"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{amount_tax}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="308" y="39" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="26" width="193" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{metodo_pago}=="01"?"01/Efectivo": $F{metodo_pago}=="02"?"02/Cheque Nominativo":
+$F{metodo_pago}=="03"?"03/Transferencia Electónica a Fondos": $F{metodo_pago}=="04"?"04/Tarjetas de Crédito":
+$F{metodo_pago}=="05"?"05/Monederos Electrónicos": $F{metodo_pago}=="06"?"06/Dinero Electrónico":
+$F{metodo_pago}=="08"?"08/Vales de Despensa": $F{metodo_pago}=="12"?"12/Dacioń de Pago":
+$F{metodo_pago}=="13"?"13/Pago por Subrogación": $F{metodo_pago}=="14"?"14/Pago por Consignación":
+$F{metodo_pago}=="15"?"15/Condonación":$F{metodo_pago}=="17"?"17/Compensación":
+$F{metodo_pago}=="23"?"23/Novación":$F{metodo_pago}=="26"?"26/Prescripción o Caducidad":
+$F{metodo_pago}=="27"?"27/A satifacción del Acredor":$F{metodo_pago}=="28"?"28/Tarjeta de Débito":
+$F{metodo_pago}=="29"?"29/Tarjeta de Servicios":$F{metodo_pago}=="30"?"30/Aplicación de Anticipos":
+$F{metodo_pago}=="31"?"31/INtermediario de Pago":$F{metodo_pago}=="99"?"99/Otros": null]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="406" y="52" width="148" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{amount_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="52" width="100" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="26" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Traslados]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="294" y="190" width="261" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_serie_csd_sat}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="95" y="89" width="458" height="27"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sello_digita_emisor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="98" y="129" width="458" height="27"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sello_digita_sat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="184" y="190" width="110" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Certificado SAT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="203" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Timbrado:]]></text>
+			</staticText>
+			<textField pattern="yyyy.MM.dd G &apos;at&apos; HH:mm:ss z">
+				<reportElement x="294" y="203" width="261" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date($F{fecha_emision}.getTime() - 06*60*60*1000)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="185" y="216" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RfcProvCertif:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="294" y="216" width="260" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RfcProvCertif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="264" width="453" height="44"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadena_original_s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="13" width="193" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{forma_pago}=="PUE"?"PUE/Pago en una sola Exhibición": $F{forma_pago}=="PPD"?"PPD/Pago en parcialidades o Diferido" : null]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="308" y="13" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MXN]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="408" y="0" width="148" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{amount_untaxed}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="308" y="0" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Moneda:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="26" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="13" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Metodo de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-2" y="70" width="555" height="6" forecolor="#FEF7F7" backcolor="#00939C"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="129" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello SAT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="264" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="14" y="163" width="151" height="100"/>
+				<imageExpression class="java.awt.Image"><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+    new com.google.zxing.qrcode.QRCodeWriter().encode(
+           "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx"+"&id="+$F{folio_fiscal}+"re="+$F{emisor_rfc}+"&rr="+$F{receptor_rfc}+"&tt="+$F{amount_total}+"&fe"+$F{sello_digita_sat}.substring( $F{sello_digita_sat}.length()-8, $F{sello_digita_sat}.length() ), com.google.zxing.BarcodeFormat.QR_CODE, 700, 700))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-2" y="39" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total con Letra:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="39" width="194" height="31"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_con_letra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

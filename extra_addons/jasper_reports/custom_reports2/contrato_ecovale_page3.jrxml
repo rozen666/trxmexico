@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato_ecovale_page3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.331000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="776"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     crm_lead
+
+
+WHERE crm_lead.id = $P{id}]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="31" width="450" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE AFILIACIÓN QUE CELEBRAN POR UNA PARTE, LA SOCIEDAD DENOMINADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="152" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABASTO MÚLTIPLE, S.A. DE C.V.,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="31" width="189" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OPERADORA DE PROGRAMAS DE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="44" width="151" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REPRESENTADA EN ESTE ACTO POR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="44" width="187" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAGZU PEDRO LOPEZ MIRO ESPINOSA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="44" width="64" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A Q UIÉN EN LO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="59" width="125" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SUCESIVO SE LE DENOMINARÁ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="59" width="76" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ECOVALE OPAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="59" width="312" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Y POR LA OTRA____________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="74" width="502" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[______________________________________________________________________ , A QUIÉN EN LO SUCESIVO SE LE DENO MINARÁ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="74" width="48" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="94" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTABLECIMIENTO,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="89" width="420" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DE CONFORMIDAD CON LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="567" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="554" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEFINICIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="15" width="554" height="12"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PARA TODOS LOS EFECTOS LEGALES A QUE HAY A LUGAR, LAS PARTES CONVIENEN EN UTILIZAR LAS SIGUIENTES DEFINICIONES ÚNICAMENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="58" width="250" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ECOVALE OPAM por medio de PROSA-CARNET realiza la]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="73" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Operadora de Programas de Abasto Múltiple, S.A. de C.V.,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="58" width="76" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ECOVALE OPAM.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="58" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="58" width="181" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es la sociedad mercantil denominada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="91" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[oferente del servicio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="73" width="250" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[autorización y liquidación de las transacciones ex itosas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="88" width="250" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[realizadas por LOS TARJETAHABIENTES.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="27" width="554" height="12"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[POR CONVENIENCIA, BREVEDAD Y PARA ÁGIL IDENTIFICACIÓN DE CLÁUSULAS Y TÉRMINOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="121" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="121" width="62" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es la ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="121" width="226" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL ESTABLECIMIENTO (estaciones de servicio).-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="136" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[persona física o moral dedicada a actividades o persecución de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="154" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[fines económicos o comerciales, contratante del servicio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="121" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[h.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="136" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[cual EL ESTABLECIMIENTO realiza el cobro del consumo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="121" width="129" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es el dispositiv o a trav és del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="154" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[realizado por LOS TARJETAHABIENTES.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="121" width="226" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMINAL PUNTO DE VENTA.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="187" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[c.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="202" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ECOVALE OPAM realiza un contrato para la prestación del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="187" width="191" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es la persona física o moral con la cual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="220" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[servicio de emisión y dispersión de saldos de LAS TARJETAS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="187" width="65" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL CLIENTE.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="187" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[i.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="187" width="153" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Son cuentas sustentadas y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="220" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[suerte que será responsable de liquidar a través de PROSA, las]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="202" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[avaladas de manera individual por ECOVALE OPAM de tal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="187" width="226" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUENTAS INDIVIDUALES.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="238" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[adquisiciones de LOS TARJETAHABIENTES en EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="256" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ESTABLECIMIENTO, comercio s o sociedades mercantiles]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="273" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[debidamente autorizados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="271" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Promoción y Operación, S.A. de C.V. (PROSA) titular de la]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="289" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[marca registrada CARNET.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="256" width="168" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es la sociedad mercantil denominada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="256" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[d.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="256" width="89" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROSA-CARNET.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="374" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ESTABLECIMIENTO solo v álido en territorio nacional y  que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="324" width="207" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAS TARJETAS, MONEDEROS ELECTÓNICOS.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="324" width="50" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Son un]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="356" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[OPAM, que podrán ser ocupadas como medio de pago en EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="324" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[e.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="392" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[están debidamente respaldadas por la marca CARNET. En]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="410" width="270" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ningún momento podrá ser intercambiable por efectivo ni títulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="339" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[instrumento electrónico no bancario creado por ECOVALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="428" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[de crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="457" width="121" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOS TARJETAHABIENTES.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="457" width="136" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Son los usuarios de las tarjetas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="472" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[emitidas por ECOVALE OPAM.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="457" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="501" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="501" width="181" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Es la institución financiera con la cual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="516" width="257" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EL ESTABLECIMIENTO realizó un contrato independiente para]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="501" width="108" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO ADQUIRIENTE.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="534" width="270" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[el suministro de una Terminal Punt o de Venta, a través del cual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="306" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[i.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="306" width="153" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Son aquellos identificados como]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="321" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[combustibles que LOS TARJETA HABIENTES podrán consumir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="339" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[en EL ESTABLECIMIENTO pagando por ello un precio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="306" width="226" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIENES Y SERVICIOS.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="389" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[cuentas indiv iduales y personalizadas ligadas a LAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="374" width="194" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Consiste en crear un número determinado de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="407" width="250" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TARJETAS, MONEDEROS ELECTRÓNICOS, de banda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="374" width="61" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL SISTEMA.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="374" width="32" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[k.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="425" width="260" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[magnética u otro dis positivo tecnológico apropiado para utilizar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="443" width="260" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[el SISTEMA, para cobro en línea asociado con el servicio de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="461" width="260" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[liquidación y compensación, no bancarias, en las que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="479" width="78" height="18"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ECOVALE OPAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="479" width="204" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[depositará una cantidad de dinero que le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="498" width="97" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[será especificada por]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="498" width="62" height="18"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL CLIENTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="497" width="53" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[para que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="503" y="497" width="62" height="18"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="516" width="98" height="18"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TARJETAHABIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="516" width="172" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[as presenten como medio de pago en]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="532" width="98" height="18"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL ESTABLECIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="532" width="172" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[autorizados para tales efectos, con las]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="549" width="251" height="18"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[cuales podrán consumir gasolina/combustible.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="13"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="464" y="0" width="91" height="18"/>
+				<textElement textAlignment="Right">
+					<font size="8" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Página 1 de 7]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

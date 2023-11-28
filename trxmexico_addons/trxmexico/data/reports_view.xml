@@ -1,0 +1,8 @@
+<report
+	id="account_report_pdf"
+	model="account.invoice"
+	string="Full Accounting Report"
+	report_type="qweb-pdf"
+	name="full_accounting_report.full_accounting_report_pdf"
+	file="full_accounting_report.full_accounting_report_pdf"
+	attachment_use="True"/>

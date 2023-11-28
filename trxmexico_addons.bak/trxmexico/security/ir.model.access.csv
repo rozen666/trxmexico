@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+,,,,,,,
+access_trx_account_invoice_admr,trx.account.invoice.admr,model_account_invoice,group_trx_admr,1,1,1,1
+access_trx_account_invoice_tax_admr,trx.account.invoice.tax.admr,account.model_account_invoice_tax,group_trx_admr,1,1,1,1
+access_trx_account_move_line_admr,trx.account.move.line.admr,account.model_account_move_line,,1,1,1,1
+access_trx_account_invoice_line_admr,access.trx.account.invoice.line.admr,account.model_account_invoice_line,group_trx_admr,1,1,1,1
+access_trx_condiciones_generales_admr,trx.condicones.generales.admr,model_trxmexico_condiciones_generales,group_trx_admr,1,1,1,1
+access_trx_condiciones_pago_admr,trx.condiciones.pago.admr,model_trxmexico_condiciones_pago,group_trx_admr,1,1,1,1
+access_trx_condicoiones_entrega_admr,trx.condiciones.entrega.admr,model_trxmexico_condiciones_entrega,group_trx_admr,1,1,1,1
+access_trx_change_monetary_admr,access.trx.change.monetary.admr,model_trxmexico_change_monetary,group_trx_admr,1,1,1,1

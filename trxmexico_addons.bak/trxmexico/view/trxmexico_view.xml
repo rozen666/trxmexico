@@ -1,0 +1,542 @@
+<openerp>
+    <data>
+    	<!-- VISTA TREE PARA CONTACTOS (RES_PARTNER) -->
+    	 <record id="view_res_partner_contactos_tree_trxmexico" model="ir.ui.view">
+            <field name="name">view.res.partner.contactos.tree.trxmexico</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                </data>
+            </field>
+        </record>
+
+    	<!-- VISTA FORM PARA CONTACTOS (RES_PARTNER) -->
+        <record id="view_res_partner_contactos_form_trxmexico" model="ir.ui.view">
+            <field name="name">view.res.partner.contactos.form.trxmexico</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/sheet/div[@name='buttons']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="//field[@name='is_company']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//label[@for='is_company']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='title']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='fax']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//notebook/page[3]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/group/group[1]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/group/group[2]/field[@name='function']" position="replace">
+                        <field name="clave_partner"/>
+                    </xpath>
+                    <xpath expr="/form/sheet/group/group[1]" position="after">
+                        <field name="domicilio_partner"/>
+                    </xpath>
+                    <xpath expr="//field[@name='category_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>                      
+                    </xpath>
+                    <xpath expr="//field[@name='parent_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>                      
+                    </xpath>
+                    <xpath expr="//field[@name='parent_id']" position="before">
+                       <div class="address_format">
+                          <h1>
+                            <field name="rfc_partner" placeholder="RFC" style="width: 90%"/>                     
+                          <!--<button name="button_validate_rfc" string="Verificar validez RFC" type="object" icon="gtk-execute" class="oe_inline" style="width: 50%"/>-->
+                          </h1>                 
+                        </div>
+                    </xpath>
+                    <xpath expr="/form[@string='Partners']/sheet" position="before">
+                         <header>
+                            <field name='status_partner' widget="statusbar" clickable="True"  statusbar_colors='{"NO_ACTIVO":"red","ACTIVO":"blue"}'/>  
+                        </header>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    	
+    	<!-- VISTA KANBAM PARA CONTACTOS (RES_PARTNER) -->
+        <record id="view_res_partner_contactos_kanban_trxmexico" model="ir.ui.view">
+            <field name="name">iew.res.partner.contactos.kanban.trxmexico</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <data>
+                </data>
+            </field>
+        </record>
+
+        <!-- Actions y Relación de RES_PARTNER  -->
+        <record model="ir.actions.act_window" id="actions_view_trxmexico">
+        	<field name="name">Clientes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_company','!=',True),('customer','=',True)]</field>        
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_tree">
+        	<field eval="1" name="sequence"/>
+        	<field name="view_mode">tree</field>
+        	<field name="view_id" ref="view_res_partner_contactos_tree_trxmexico"/>
+        	<field name="act_window_id" ref="actions_view_trxmexico"/>
+        	<field name="domain">[]</field>
+
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_form">
+        	<field eval="3" name="sequence"/>
+        	<field name="view_mode">form</field>
+        	<field name="view_id" ref="view_res_partner_contactos_form_trxmexico"/>
+        	<field name="act_window_id" ref="actions_view_trxmexico"/>
+        	<field name="domain">[]</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_kanban">
+        	<field eval="1" name="sequence"/>
+        	<field name="view_mode">kanban</field>
+        	<field name="view_id" ref="view_res_partner_contactos_kanban_trxmexico"/>
+        	<field name="act_window_id" ref="actions_view_trxmexico"/>
+        	<field name="domain">[]</field>
+        </record>
+
+
+        <!-- VISTA TREE PARA PRODUCTOS (PRODUCT.PRODUCT) -->
+         <record id="view_product_tree_trxmexico" model="ir.ui.view">
+            <field name="name">view.product.tree.trxmexico</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.view_stock_product_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='default_code']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='attribute_value_ids']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='lst_price']" position="attributes">
+                        <attribute name="string">Costo DLS</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='qty_available']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='uom_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='virtual_available']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='ean13']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='lst_price']" position="after">
+                        <field name="price_sell_mxn" string="Costo MXN" />
+                    </xpath>
+                            
+
+                </data>
+            </field>
+        </record>
+
+        <!-- VISTA FORM PARA PRODUCTOS (PRODUCT.PRODUCT)) -->
+        <record id="view_product_form_trxmexico" model="ir.ui.view">
+            <field name="name">view.product.form.trxmexico</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='default_code']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='sale_ok']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                     <xpath expr="//label[@for='sale_ok']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='active']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='ean13']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='default_code']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='type']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[2]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[3]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[4]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[5]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[6]" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//label[@for='name']" position="attributes">
+                        <attribute name="string">Código del Producto</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='description']" position="attributes">
+                        <attribute name="placeholder">Descripción del Producto</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='list_price']" position="attributes">
+                        <attribute name="string">Precio de Venta DLS</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='list_price']" position="after">
+                        <field name="price_sell_mxn"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+        
+        <!-- VISTA KANBAM PARA CONTACTOS (RES_PARTNER) -->
+        <record id="view_product_kanban_trxmexico" model="ir.ui.view">
+            <field name="name">iew.product.kanban.trxmexico</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <data>
+                </data>
+            </field>
+        </record>
+
+        <!-- Actions y Relación de RES_PARTNER  -->
+        <record model="ir.actions.act_window" id="actions_view_product_trxmexico">
+            <field name="name">Productos</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>        
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_tree">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_product_tree_trxmexico"/>
+            <field name="act_window_id" ref="actions_view_product_trxmexico"/>
+            <field name="domain">[]</field>
+
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_form">
+            <field eval="3" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_product_form_trxmexico"/>
+            <field name="act_window_id" ref="actions_view_product_trxmexico"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="actions_view_trxmexico_kanban">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_product_kanban_trxmexico"/>
+            <field name="act_window_id" ref="actions_view_product_trxmexico"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <!-- VISTA FORM PARA CAJA CHICA ACCOUNT_INVOICE -->
+         <record model="ir.ui.view" id="view_trxmexico_cuentas_cotizaciones_tree">
+            <field name="name">view.trxmexico.cuentas.cotizaciones.tree</field>
+            <field name="model">account.invoice</field> 
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="priority" eval="28"/>
+            <field name="mode">primary</field> 
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/tree/field[@name='origin']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath> 
+                    <xpath expr="/tree/field[@name='date_due']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath> 
+                    <xpath expr="/tree/field[@name='user_id']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath> 
+                    <xpath expr="/tree/field[@name='company_id']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='date_invoice']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='residual']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='number']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='state']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='amount_untaxed']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='amount_total']" position="attributes">
+                        <attribute name="string">Importe Total DLS</attribute> 
+                    </xpath>
+                    <xpath expr="/tree/field[@name='partner_id']" position="after">
+                        <field name="name_vendedor"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!-- VISTA FORM PARA CAJA CHICA ACCOUNT_INVOICE -->
+        <record model="ir.ui.view" id="view_trxmexico_cuentas_cotizaciones_form">
+            <field name="name">view.trxmexico.cuentas.cotizaciones.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="priority" eval="28"/>
+            <field name="mode">primary</field> 
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/header" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/form/sheet/h1" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath> 
+                    <field name="payment_term" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </field> 
+                    <xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line']/tree/field[@name='name']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line']/tree/field[@name='account_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/group/group[2]/field[@name='journal_id']" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <xpath expr="/form/sheet/group/group[2]/field[@name='account_id']" position="attributes">
+                    <attribute name="invisible">1</attribute> 
+                    </xpath>
+                    <field name="fiscal_position" position="attributes">
+                        <attribute name="invisible">1</attribute> 
+                    </field> 
+                    <xpath expr="/form/sheet/notebook/page[@string='Other Info']" position="attributes">
+                        <attribute name="invisible">True</attribute> 
+                    </xpath> 
+                    <xpath expr="/form/sheet/notebook/page[@string='Payments']" position="attributes">
+                        <attribute name="invisible">True</attribute> 
+                    </xpath> 
+                    <xpath expr="/form/div" position="attributes">
+                        <attribute name="invisible">True</attribute> 
+                    </xpath> 
+                    <field name="date_invoice" position="before">
+                        <field name="fecha_cotizacion"/>
+                    </field>
+                    <field name="date_invoice" position="attributes">
+                        <attribute name="invisible">True</attribute> 
+                    </field>
+                    <field name="date_invoice" position="attributes">
+                        <attribute name="string">Fecha de Cotización</attribute> 
+                    </field>
+                    <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
+                        <attribute name="string">Lineas de Captura</attribute> 
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line']/tree/field[@name='price_unit']" position="attributes">
+                        <attribute name="string">Precio DLS</attribute>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line']/tree/field[@name='price_unit']" position="after">
+                        <field name="price_sell_mxn"/>
+                        <field name="descuento" placeholder='%'/>
+
+                    </xpath>
+                    <xpath expr="/form/sheet/h1" position="before">
+                        <group>
+                            <h1>
+                                <field name="referencia_cotizacion" readonly='True'/>
+                            </h1>
+                        </group>
+                    </xpath>
+                    <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="name_vendedor"/>
+                        <field name="descuento_habilitar" required='True'/>
+                        <field name="descuento" placeholder='%' attrs="{'invisible': [('descuento_habilitar', '!=', '1')]}"/>
+                    </xpath>
+                    <xpath expr="/form" position="attributes">
+                        <attribute name="string">Cotización</attribute> 
+                    </xpath>
+                     <xpath expr="/form/sheet" position="attributes">
+                        <attribute name="string">Cotización</attribute> 
+                    </xpath>
+                    <xpath expr="//label[@for='comment']" position="before">
+                        <separator string="Condiciones Comerciales"/>
+                        <group>
+                            <field name="invoice_id" widget='many2many_checkboxes'/>
+                        </group>
+                        <group>
+                            <field name="invoice_id_entrega" widget='many2many_checkboxes'/>
+                        </group>
+                        <group>
+                            <field name="invoice_id_general" widget='many2many_checkboxes'/>
+                        </group>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/field[@name='amount_untaxed']" position="attributes">
+                        <attribute name="modifiers">'invisible': [('descuento_habilitar', '=', '1')]</attribute> 
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/field[@name='amount_total']" position="attributes">
+                        <attribute name="modifiers">{'invisible': [('descuento_habilitar', '=', '1')], 'readonly': 'True'}</attribute> 
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/field[@name='amount_untaxed']" position="before">
+                        <field name="des_subtotal" widget="monetary" readonly = 'True' attrs="{'invisible': [('descuento_habilitar', '!=', '1')]}" options="{'currency_field': 'currency_id'}"/>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/field[@name='amount_untaxed']" position="after">
+                        <field name="subtotal_con_desc" widget="monetary" readonly = 'True' attrs="{'invisible': [('descuento_habilitar', '!=', '1')]}" options="{'currency_field': 'currency_id'}"/>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/field[@name='amount_total']" position="after">
+                        <field name="total_con_desc" widget="monetary" readonly = 'True' attrs="{'invisible': [('descuento_habilitar', '!=', '1')]}" class="oe_subtotal_footer_separator" options="{'currency_field': 'currency_id'}"/>
+                    </xpath>
+                    <xpath expr="/form/sheet/notebook/page[1]/group/div/button[@name='button_reset_taxes']" position="replace">
+                        <button name="button_reset_taxes_trx" states="draft,proforma2"
+                            string="(update)" class="oe_link oe_edit_only"
+                            type="object" help="Recompute taxes and total"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_trxmexico_cuentas_cotizaciones">
+            <field name="name">Cotizaciones TRXMéxico</field>
+            <field name="res_model">account.invoice</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="view_trxmexico_cuentas_cotizaciones_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_trxmexico_cuentas_cotizaciones_tree">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_trxmexico_cuentas_cotizaciones_tree"/>
+            <field name="act_window_id" ref="action_trxmexico_cuentas_cotizaciones"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_trxmexico_cuentas_cotizaciones_form">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_trxmexico_cuentas_cotizaciones_form"/>
+            <field name="act_window_id" ref="action_trxmexico_cuentas_cotizaciones"/>
+        </record>
+
+        <!-- Vista Form para Tipo de Cambio -->
+        <record id="view_trx_change_type_form" model="ir.ui.view">
+            <field name="name">Tipo de Cambio</field>
+            <field name="model">trxmexico.change.monetary</field>
+            <field name="arch" type="xml">
+                <form string="Tipo de Cambio">
+                    <separator string="Dolar hoy en México"/>
+                    <group colspan='2' col='4'>
+                        <field name="price_dolar"/>
+                        <field name="price_before" readonly='True'/>
+                        <field name="currency_id" readonly='True'/> 
+                    </group>
+                    <footer>
+                      <button name="button_change_money" string="Aceptar" class="oe_highlight" type="object" confirm="¿Desea realizar el tipo de cambio?" />
+                    </footer>
+              </form>
+            </field>
+           </record>
+
+        <record id="view_trx_change_type_action" model="ir.actions.act_window">
+            <field name="name">Tipo de Cambio</field>
+            <field name="res_model">trxmexico.change.monetary</field>  
+            <field name="type">ir.actions.act_window</field>  
+            <field name="view_type">form</field>  
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_trx_change_type_form"/>  
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Vista Form Para control de usuarios -->
+        <record model="ir.ui.view" id="view_res_users_trx_config_form">
+            <field name="name">res.users.trx.config.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//sheet/div[1]" position="replace"/>
+                    <xpath expr="//sheet/group" position="after">
+                        <separator colspan="4" string="Grupos"/>
+                        <field name="groups_id" string="Grupos de usuarios" 
+                                widget="many2many_checkboxes"
+                                domain="[('category_id','=','Trxusers')]" />
+                        <group name="grp_sucursal">
+                        </group>
+                        <!-- <group name="grp_sucursal"
+                                attrs="{'invisible': [('sucursal_invisible', '=', True)]}">
+                        </group> -->
+                    </xpath>
+                    <xpath expr="//sheet/group/label" position="replace"/>
+                    <xpath expr="//sheet/group/div" position="replace"/>
+                    <xpath expr="//sheet/group/field[@name='phone']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//sheet/group/field[@name='mobile']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//sheet/group/field[@name='fax']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!--Action para  res.users (INICIO) -->
+        <record model="ir.actions.act_window" id="trx_res_users_action">
+            <field name="name">Usuario</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('id','>',1)]</field>
+        </record>
+
+      <!-- Menús agregados (INICIO)--> 
+        
+        <!-- Menús primer nivel (INICIO) -->
+        <menuitem name="TRXMexico" id="main_trx_mexico"/>
+<!--         <menuitem id="main_trx_mexico_menu" name="TRXMexico"/>
+ -->        
+        <!-- Menús segundo nivel (INICIO)-->
+        <menuitem id="trx_mexico_menu_organizador" name="Organizador" parent="main_trx_mexico"/>
+
+        <!-- Menús tercer nivel (INICIO)-->
+        <menuitem id="trx_mexico_menu_productoss" name="Catálogo de Productos" parent="trx_mexico_menu_organizador" action='actions_view_product_trxmexico' sequence ='10'/>
+        <menuitem id="trx_mexico_menu_cotizacion" name="Cotizaciones" parent="trx_mexico_menu_organizador" action='action_trxmexico_cuentas_cotizaciones' sequence ='20'/>
+        <menuitem id="trx_mexico_menu_contactos" name="Contactos" parent="trx_mexico_menu_organizador" action='actions_view_trxmexico' sequence ='30'/>
+        <menuitem id="trx_mexico_menu_tipo_cambio" name="Tipo de Cambio" parent="trx_mexico_menu_organizador" action='view_trx_change_type_action' sequence ='40'/>
+        <menuitem id="trx_mexico_menu_users" name="Usuarios" parent="trx_mexico_menu_organizador" action='trx_res_users_action' sequence ='50'/>
+
+    </data>
+</openerp>
+
+
+
+
+
+       

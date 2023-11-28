@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cotizacion_PowerPlate" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.2722928551174548"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/kasabian/Documentos/Jasper Reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDS" class="java.lang.Object"/>
+	<parameter name="PIDS" class="java.lang.Object">
+		<defaultValueExpression><![CDATA[$P{IDS}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT CASE WHEN type_cotizacion = False THEN 0 ELSE 1 END AS type_cot,
+       account_invoice.id as po_id,
+       fecha_cotizacion,
+       referencia_cotizacion,
+       account_invoice.comment,
+       subtotal_con_desc,
+       des_subtotal,
+       amount_tax,
+       amount_untaxed,
+       total_con_desc,
+       res_partner.function,
+       res_partner.name,
+       costo_envio,
+       observaciones
+
+FROM account_invoice
+
+INNER JOIN res_users ON account_invoice.name_vendedor = res_users.id
+INNER JOIN res_partner ON account_invoice.partner_id = res_partner.id
+
+WHERE $X{IN,account_invoice.id,PIDS}]]>
+	</queryString>
+	<field name="type_cot" class="java.lang.Integer"/>
+	<field name="po_id" class="java.lang.Integer"/>
+	<field name="fecha_cotizacion" class="java.sql.Date"/>
+	<field name="referencia_cotizacion" class="java.lang.String"/>
+	<field name="comment" class="java.lang.String"/>
+	<field name="subtotal_con_desc" class="java.lang.Double"/>
+	<field name="des_subtotal" class="java.lang.Double"/>
+	<field name="amount_tax" class="java.math.BigDecimal"/>
+	<field name="amount_untaxed" class="java.math.BigDecimal"/>
+	<field name="total_con_desc" class="java.lang.Double"/>
+	<field name="function" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="costo_envio" class="java.lang.Double"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<variable name="SUBTOTAL" class="java.lang.Float">
+		<variableExpression><![CDATA[$F{subtotal_con_desc} + $F{costo_envio}]]></variableExpression>
+	</variable>
+	<variable name="SUBTOTAL1" class="java.lang.Float">
+		<variableExpression><![CDATA[$F{subtotal_con_desc}+$F{des_subtotal}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="140" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="134" height="96"/>
+				<imageExpression class="java.lang.String"><![CDATA["main_logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="346" y="0" width="226" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Power Plate México, S.A. de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="20" width="296" height="50"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" lineSpacing="Single">
+					<font isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Corbeta 8, Lomas del Chamizal, Cuajimalpa de Morelos, 05129 Ciudad de México, CDMX.
+Tel.: 55-2452-8100, 80-0841-4666
+www.powerplatemexico.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="96" width="372" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COTIZACIÓN]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="472" y="119" width="81" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha_cotizacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="100" width="100" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{function}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="119" width="372" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{referencia_cotizacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="403" y="70" width="168" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[e-mail:info@power-plate.com.mx]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="120" width="164" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="1" width="587" height="9"/>
+				<subreportParameter name="type_cotizacion">
+					<subreportParameterExpression><![CDATA[$F{type_cot}.toString()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="order_id">
+					<subreportParameterExpression><![CDATA[$F{po_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subreport_cotizacion.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="31">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="10" y="-2" width="541" height="32"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ESTE DOCUMENTO PUEDE CONTENER INFORMACIÓN CONFIDENCIAL, SÓLO ESTÁ DIRIGIDA AL DESTINATARIO DEL MISMO, LA INFORMACIÓN PUEDE SER PRIVILEGIADA. ESTÁ PROHIBIDO QUE CUALQUIER PERSONA DISTINTA AL DESTINATARIO COPIE O DISTRIBUYA ESTE DOCUMENTO]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="342">
+			<rectangle>
+				<reportElement x="472" y="23" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="403" y="53" width="69" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="472" y="3" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="472" y="13" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="472" y="33" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="372" y="105" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="372" y="3" width="100" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="413" y="13" width="59" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="403" y="33" width="69" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="403" y="23" width="69" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="403" y="63" width="69" height="10" forecolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="403" y="33" width="69" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL (antes de IVA)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="53" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[I.V.A.]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="483" y="63" width="70" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total_con_desc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement x="10" y="105" width="542" height="235"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{comment}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="483" y="13" width="70" height="10" isRemoveLineWhenBlank="true" forecolor="#EF0000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{des_subtotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="403" y="13" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCUENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="3" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="483" y="23" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costo_envio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="403" y="63" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRAN TOTAL]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="483" y="33" width="70" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Float"><![CDATA[$V{SUBTOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="403" y="23" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENVIO]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="483" y="53" width="70" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{amount_tax}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="3" width="381" height="60"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="554" y="3" width="18" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="554" y="14" width="18" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="554" y="24" width="18" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="34" width="19" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="54" width="19" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="63" width="19" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="483" y="3" width="70" height="11"/>
+				<textElement verticalAlignment="Top">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Float"><![CDATA[$V{SUBTOTAL1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

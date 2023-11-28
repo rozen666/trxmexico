@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<openerp>
+    <data>
+    	<template id = "full_accounting_report_pdf">
+		    <t t-call= "report.container">
+		    	<t t-call="report.external_layot">
+		    		<div class = "page">
+		    			<div class="oe_structure"/>
+		    			<div class="page-header"/>
+		    			<t t-foreach="_get_periods(docs)" as ="p">
+		    				<blockquotes>
+		    					<p>Period</p>
+		    					<footer>
+		    						<span t-esc="p"/>
+		    					</footer>
+		    				</blockquotes>
+		    				<table class="table table-striped">
+		    					<tr>
+		    						<td>ID</td>
+		    						<td>Name</td>
+		    						<td>Date Write</td>
+		    					</tr>
+		    					<t t-foreach="docs" as="o">
+		    						<t t-if="p == o.period_id.name">
+		    							<td><span t-field="o.name"/></td>
+		    							<td><span t-field="o.id"/></td>
+		    							<td><span t-field="o.write_date"/></td>
+		    						</t>
+		    					</t>
+		    				</table>
+		    			</t>
+		    		</div>
+		    	</t>
+		    </t>
+    	</template>
+	</data>
+</openerp>

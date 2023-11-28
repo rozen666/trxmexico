@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_line" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="5" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.8150000000000082"/>
+	<property name="ireport.x" value="10"/>
+	<property name="ireport.y" value="25"/>
+	<import value="net.sf.jasperreports.engine.util.JRImageLoader"/>
+	<parameter name="order_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{order_id}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGES" class="java.lang.Object"/>
+	<parameter name="type_cotizacion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{type_cotizacion}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT encode(product_template.image,'escape'),
+       quantity,
+       account_invoice_line.name,
+       price_unit,
+       price_subtotal,
+       product_template.description,
+       account_invoice_line.name,
+       description_p
+
+FROM account_invoice_line
+
+INNER JOIN product_product ON account_invoice_line.product_id= product_product.id
+INNER JOIN product_template ON product_product.product_tmpl_id = product_template.id
+
+WHERE account_invoice_line.invoice_id = $P{order_id}
+
+ORDER BY account_invoice_line.id ASC]]>
+	</queryString>
+	<field name="encode" class="java.lang.String"/>
+	<field name="quantity" class="java.math.BigDecimal"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="price_unit" class="java.math.BigDecimal"/>
+	<field name="price_subtotal" class="java.math.BigDecimal"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="description_p" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String">
+		<variableExpression><![CDATA[$P{type_cotizacion}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="24">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#999999"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="22" backcolor="#FEFEFE"/>
+			</rectangle>
+			<line>
+				<reportElement x="358" y="0" width="1" height="22"/>
+			</line>
+			<line>
+				<reportElement x="457" y="0" width="1" height="22"/>
+			</line>
+			<line>
+				<reportElement x="170" y="0" width="1" height="22"/>
+			</line>
+			<line>
+				<reportElement x="39" y="0" width="1" height="22"/>
+			</line>
+			<staticText>
+				<reportElement x="171" y="0" width="187" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="39" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="0" width="130" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMAGEN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="0" width="95" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{type_cotizacion}=="1"? "TOTAL MXN":"TOTAL USD"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="0" width="95" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{type_cotizacion}=="1"? "UNITARIO MXN":"UNITARIO USD"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="109" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="39" height="108"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="360" y="0" width="97" height="108"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{price_unit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="460" y="0" width="95" height="108"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{price_subtotal}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="40" y="1" width="130" height="107"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($F{encode}.getBytes()))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="171" y="1" width="189" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="171" y="28" width="189" height="80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{description_p}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

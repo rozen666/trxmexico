@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="False">
+    <!-- ============================================================================== -->
+        <!-- .....................CONDICIONES DE PAGO.......................    -->
+        <record id="trx_condicion_pago_1" model="trxmexico.condiciones.pago">
+            <field name="name">Condicion 1</field>
+            <field name="details">60% DE ANTICIPO 40% CONTRA AVISO DE ENTREGA</field>
+        </record>
+        <record id="trx_condicion_pago_2" model="trxmexico.condiciones.pago">
+            <field name="name">Condicion 2</field>
+            <field name="details">CUENTA BANCARIA EN DOLARES (USD) BANAMEX Suc: 4144, Cta. 9000399 CLABE: 002180414490003998</field>
+        </record>
+        <record id="trx_condicion_pago_3" model="trxmexico.condiciones.pago">
+            <field name="name">Condicion 3</field>
+            <field name="details">NOTA: EN CASO DE HACER EL PAGO EN MODENA NACIONAL (MXN) EL TIPO DE CAMBIO SE TOMARA DE LA PAGINA BANAMEX.COM A LA VENTA EL DIA DE HACER LA OPERCIÓN</field>
+        </record>
+        <record id="trx_condicion_pago_4" model="trxmexico.condiciones.pago">
+            <field name="name">Condicion 4</field>
+            <field name="details">CUENTA EN MONEDA NACIONA (MXP): BANAMEX, Suc: 4144, Cta. 0028649 CLABE: 002180414400286491</field>
+        </record>
+        <record id="trx_condicion_pago_5" model="trxmexico.condiciones.pago">
+            <field name="name">Condicion 5</field>
+            <field name="details">TIEMPO DE ENTREGA: DE 5 A 8 SEMANAS A PARTIR DEL PAGO ANTICIPO</field>
+        </record>
+        <record id="trx_condicion_pago_6" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 1</field>
+            <field name="details">GIMNASIO: INCLUYE INSTALACIÓN</field>
+        </record>
+        <record id="trx_condicion_pago_7" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 2</field>
+            <field name="details">SE ENTREGA A PIE DE CAMIÓN</field>
+        </record>
+        <record id="trx_condicion_pago_8" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 3</field>
+            <field name="details">ENVIO, MANIOBRAS Y VIATICOS CORREN POR CUENTA DEL CLIENTE</field>
+        </record>
+        <record id="trx_condicion_pago_9" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 4</field>
+            <field name="details">PISO: NO INCLUYE INSTALACIÓN</field>
+        </record>
+        <record id="trx_condicion_pago_10" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 5</field>
+            <field name="details">LAS MEDIDAS DEL AREA SON RESPONSABILIDAD DE CLIENTE</field>
+        </record>
+        <record id="trx_condicion_pago_11" model="trxmexico.condiciones.entrega">
+            <field name="name">Condicion 6</field>
+            <field name="details">TRX: INCLUYE ENSAMBLADO SIN FIJADO AL FIRME DE CONCRETO (PISO-PARED)</field>
+        </record>
+        <record id="trx_condicion_pago_12" model="trxmexico.condiciones.generales">
+            <field name="name">Condicion 1</field>
+            <field name="details">POWER PLATE MÉXICO S.A DE C.V. NO ACEPTA CAMBIOS Y/O DEVOLUCIONES DE EQUIPOS QUE HAN SIDO AUTORIZADOS POR EL CLIENTE</field>
+        </record>
+        <record id="trx_condicion_pago_13" model="trxmexico.condiciones.generales">
+            <field name="name">Condicion 12</field>
+            <field name="details">POWER PLATE MÉXICO S.A. DE C.V. NO ES RESPONSABLE POR FALLAS Y/O ERROROES QUE EL CLIENTE COMETA AL CONFIMAR LA ORDEN DE</field>
+        </record>
+        <record id="trx_condicion_pago_14" model="trxmexico.condiciones.generales">
+            <field name="name">Condicion 3</field>
+            <field name="details">COMPRA: COLORES, ESPECIFIACACIONES GENERALES, ELECTRICA ETC.</field>
+        </record>
+        <record id="trx_condicion_pago_15" model="trxmexico.condiciones.generales">
+            <field name="name">Condicion 4</field>
+            <field name="details">VIGENCIA 30 DIAS NATURALES</field>
+        </record>
+    </data>
+</openerp>

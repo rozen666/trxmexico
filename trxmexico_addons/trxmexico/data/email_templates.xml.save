@@ -1,0 +1,25 @@
+${ctx['correo_from']}<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+    	<record id="template_cotizacion_trx" model="email.template">
+            <field name="name">Envio Cotización</field>
+            <field name="model_id" ref="model_account_invoice"/>
+            <field name="email_from"><![CDATA[ ${ctx['nombre_from']} <${ctx['correo_from']}>  ]]></field>
+            <field name="email_to"> ${ctx['receptor_email']} </field>
+            
+            <field name="subject"><![CDATA[Cotización Equipo Gimnasio PPM / TRX Mexico ]]></field>
+            <field name="body_html">
+                <![CDATA[
+                	<h3> Cotización TRXMexico</h3>
+                	<p>
+                   		Hola buen día por este medio le hacemos llegar su cotizacón, misma que fue realizada con la fecha: ${ctx['fecha_cotizacion']}.
+
+                        Agradecemos su preferencia. Excelente día.
+                	</p>
+
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</openerp>

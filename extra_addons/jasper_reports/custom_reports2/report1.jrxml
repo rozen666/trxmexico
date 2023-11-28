@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jemil_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="45"/>
+	<parameter name="ID" class="java.lang.Object"/>
+	<parameter name="PIDS" class="java.util.List"/>
+	<queryString>
+		<![CDATA[SELECT account_invoice.*,
+	lugar_exp,
+	fecha_certificacion,
+	fecha_emision,
+	tipo_comprobante,
+	folio_fiscal,
+	serie,
+	folio,
+	no_serie_csd_sat,
+	no_serie_csd_emisor,
+	metodo_pago,
+	forma_pago,
+	total_con_letra,
+	sello_digita_emisor,
+	sello_digita_sat,
+	comentarios,
+	state_ac,
+          amount_untaxed as subototal,
+	amount_tax as impuesto,
+          amount_total as total,
+	account_invoice_line.name as  descripcion,
+	account_invoice_line.quantity as  cantidad,
+	account_invoice_line.price_unit as  valor_unitrio,
+	account_invoice_line.price_subtotal as  monto
+
+FROM account_invoice
+
+INNER JOIN account_invoice_line ON account_invoice.id = account_invoice_line.account_id
+
+
+WHERE $X{IN,account_invoice.id,PIDS}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="comment" class="java.lang.String"/>
+	<field name="date_due" class="java.sql.Date"/>
+	<field name="check_total" class="java.math.BigDecimal"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="payment_term" class="java.lang.Integer"/>
+	<field name="number" class="java.lang.String"/>
+	<field name="message_last_post" class="java.sql.Timestamp"/>
+	<field name="company_id" class="java.lang.Integer"/>
+	<field name="currency_id" class="java.lang.Integer"/>
+	<field name="create_date" class="java.sql.Timestamp"/>
+	<field name="create_uid" class="java.lang.Integer"/>
+	<field name="fiscal_position" class="java.lang.Integer"/>
+	<field name="amount_untaxed" class="java.math.BigDecimal"/>
+	<field name="partner_bank_id" class="java.lang.Integer"/>
+	<field name="partner_id" class="java.lang.Integer"/>
+	<field name="supplier_invoice_number" class="java.lang.String"/>
+	<field name="reference_type" class="java.lang.String"/>
+	<field name="journal_id" class="java.lang.Integer"/>
+	<field name="amount_tax" class="java.math.BigDecimal"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="move_id" class="java.lang.Integer"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="internal_number" class="java.lang.String"/>
+	<field name="account_id" class="java.lang.Integer"/>
+	<field name="reconciled" class="java.lang.Boolean"/>
+	<field name="residual" class="java.math.BigDecimal"/>
+	<field name="move_name" class="java.lang.String"/>
+	<field name="date_invoice" class="java.sql.Date"/>
+	<field name="period_id" class="java.lang.Integer"/>
+	<field name="write_date" class="java.sql.Timestamp"/>
+	<field name="user_id" class="java.lang.Integer"/>
+	<field name="write_uid" class="java.lang.Integer"/>
+	<field name="origin" class="java.lang.String"/>
+	<field name="amount_total" class="java.math.BigDecimal"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="sent" class="java.lang.Boolean"/>
+	<field name="commercial_partner_id" class="java.lang.Integer"/>
+	<field name="fecha_certificacion" class="java.sql.Timestamp"/>
+	<field name="lugar_exp" class="java.lang.String"/>
+	<field name="cadena_original_SAT" class="java.lang.String"/>
+	<field name="folio" class="java.lang.String"/>
+	<field name="total_con_letra" class="java.lang.String"/>
+	<field name="fecha_emision" class="java.sql.Timestamp"/>
+	<field name="metodo_pago" class="java.lang.String"/>
+	<field name="serie" class="java.lang.String"/>
+	<field name="sello_digita_emisor" class="java.lang.String"/>
+	<field name="tipo_comprobante" class="java.lang.String"/>
+	<field name="no_serie_csd_sat" class="java.lang.String"/>
+	<field name="folio_fiscal" class="java.lang.String"/>
+	<field name="forma_pago" class="java.lang.String"/>
+	<field name="sello_digita_sat" class="java.lang.String"/>
+	<field name="comentarios" class="java.lang.String"/>
+	<field name="state_ac" class="java.lang.String"/>
+	<field name="emisor_fact" class="java.lang.Integer"/>
+	<field name="no_serie_csd_emisor" class="java.lang.String"/>
+	<field name="subototal" class="java.math.BigDecimal"/>
+	<field name="impuesto" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="valor_unitrio" class="java.math.BigDecimal"/>
+	<field name="monto" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="194" splitType="Stretch">
+			<staticText>
+				<reportElement x="245" y="47" width="154" height="16"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de Emisión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="63" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipo de Comprobante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="30" width="154" height="17"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha y Hora de Certificación:]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="245" y="0" width="310" height="159"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="310" height="15"/>
+					<textElement textAlignment="Center">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FACTURA]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="154" y="15" width="155" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{lugar_exp}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="47" width="156" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{fecha_emision}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="30" width="155" height="17"/>
+					<textElement/>
+					<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{fecha_certificacion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="63" width="155" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo_comprobante}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="79" width="155" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{folio_fiscal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="95" width="155" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{serie}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="111" width="155" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{folio}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="127" width="155" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{no_serie_csd_sat}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="143" width="156" height="16"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{no_serie_csd_emisor}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="245" y="14" width="154" height="16"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lugar y Fecha de Expedición:]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="40" y="0" width="126" height="65"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<imageExpression class="java.lang.String"><![CDATA["main_logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="245" y="79" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Folio Fiscal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="95" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="111" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="127" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No. serie CSD de SAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="143" width="154" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No. serie CSD de Emisor]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="172" width="552" height="20" forecolor="#848484" backcolor="#D9D9D9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="172" width="164" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="172" width="104" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="172" width="104" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="172" width="87" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="172" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="65" width="245" height="94"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="245" height="14"/>
+					<textElement textAlignment="Center">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLIENTE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="30" width="40" height="14"/>
+					<textElement textAlignment="Center">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RFC:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="44" width="62" height="14"/>
+					<textElement textAlignment="Center">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dirección:]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="162" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="0" width="100" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="2" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{valor_unitrio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="1" width="93" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="1" width="87" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{impuesto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="254" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="89" height="14"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="14" width="89" height="14"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Metodo de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="89" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[	IMPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="14" width="89" height="14"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="28" width="89" height="14"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16% IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="52" width="89" height="14"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="329" y="52" width="178" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="358" y="212" width="196" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="150" y="106" width="404" height="28"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="4" y="224" width="550" height="24"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="247" y="212" width="111" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Serie del certificado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="212" width="217" height="12"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sello digital del emisor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="100" y="106" width="50" height="28"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sello del SAT:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="4" y="146" width="550" height="53"/>
+				<box leftPadding="1">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="134" width="550" height="12"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original del complemento de certificación digital del SAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="199" width="550" height="13"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serie del certificado del emisor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="146" width="539" height="53"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadena_original_SAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="106" width="403" height="28"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sello_digita_sat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="224" width="539" height="24"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sello_digita_emisor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="53" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="28" width="100" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{impuesto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="14" width="100" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{subototal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

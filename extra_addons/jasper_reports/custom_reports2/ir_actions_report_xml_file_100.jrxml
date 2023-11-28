@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clasben Report" language="groovy" pageWidth="685" pageHeight="572" orientation="Landscape" columnWidth="655" leftMargin="15" rightMargin="15" topMargin="15" bottomMargin="15">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.sheet.names" value="Clasben report"/>
+	<import value="org.apache.commons.codec.binary.Base64"/>
+	<parameter name="IMAGES" class="java.lang.Object"/>
+	<queryString>
+		<![CDATA[select cb_zapato.id,
+       cb_zapato.name_template,
+       cb_zapato.price_sell_mxn,
+       cb_zapato.*
+
+from product_product as cb_zapato
+]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="name_template" class="java.lang.String"/>
+	<field name="price_sell_mxn" class="java.lang.Double"/>
+	<field name="ean13" class="java.lang.String"/>
+	<field name="create_date" class="java.sql.Timestamp"/>
+	<field name="default_code" class="java.lang.String"/>
+	<field name="create_uid" class="java.lang.Integer"/>
+	<field name="message_last_post" class="java.sql.Timestamp"/>
+	<field name="product_tmpl_id" class="java.lang.Integer"/>
+	<field name="image_variant" class="java.lang.Object"/>
+	<field name="write_uid" class="java.lang.Integer"/>
+	<field name="write_date" class="java.sql.Timestamp"/>
+	<field name="active" class="java.lang.Boolean"/>
+	<field name="code_pruducto" class="java.lang.String"/>
+	<field name="price_sell_mxn_moved0" class="java.lang.String"/>
+	<variable name="solo" class="java.lang.String">
+		<variableExpression><![CDATA[$P{IMAGES}.get($F{id}.toString())]]></variableExpression>
+	</variable>
+	<variable name="IoImage" class="java.io.InputStream">
+		<variableExpression><![CDATA[new ByteArrayInputStream(new Base64().decodeBase64($V{solo}.getBytes("UTF-8")))]]></variableExpression>
+	</variable>
+	<title>
+		<band height="49">
+			<staticText>
+				<reportElement x="0" y="28" width="100" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="28" width="100" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Linea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="28" width="100" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Color]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="28" width="50" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Talla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="28" width="64" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="28" width="58" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="28" width="66" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Venta Salon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="538" y="28" width="117" height="21"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[   Imagen]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement positionType="Float" x="538" y="0" width="117" height="67"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<imageExpression class="java.io.InputStream"><![CDATA[$V{IoImage}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
